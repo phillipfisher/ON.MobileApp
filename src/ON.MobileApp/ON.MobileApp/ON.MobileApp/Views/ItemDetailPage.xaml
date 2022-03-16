@@ -6,8 +6,9 @@
 
     <StackLayout Spacing="20" Padding="15">
         <Label Text="{Binding Date}" FontSize="Small"/>
-        <Label Text="{Binding Title}" FontSize="Large"/>
+        <Label Text="{Binding Heading}" FontSize="Large"/>
         <Label Text="{Binding Subtitle}" FontSize="Medium"/>
+        <WebView x:Name="bodyWebView" Source="{Binding HtmlSource}"  WidthRequest="200" HeightRequest="200" />
     </StackLayout>
     
 </ContentPage>

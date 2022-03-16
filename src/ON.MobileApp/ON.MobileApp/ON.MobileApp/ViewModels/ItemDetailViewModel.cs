@@ -13,6 +13,7 @@ namespace ON.MobileApp.ViewModels
         private string heading;
         private string date;
         private string subtitle;
+        private string body;
         public string Id { get; set; }
 
         public string Heading
@@ -32,6 +33,17 @@ namespace ON.MobileApp.ViewModels
             get => subtitle;
             set => SetProperty(ref subtitle, value);
         }
+
+        public string Body
+        {
+            get => body;
+            set {
+                SetProperty(ref body, value);
+                HtmlSource.Html = @"<html><body>" + body + @"</body></html>";
+            }
+        }
+
+        public HtmlWebViewSource HtmlSource { get; private set; } = new HtmlWebViewSource() { Html = "<html><body>body</body></html>" };
 
         public string ItemId
         {
@@ -55,6 +67,7 @@ namespace ON.MobileApp.ViewModels
                 Heading = item.Title;
                 Subtitle = item.Subtitle;
                 Date = item.DatePretty;
+                Body = item.Body;
             }
             catch (Exception)
             {

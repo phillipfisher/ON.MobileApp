@@ -19,7 +19,24 @@ namespace ON.MobileApp.Services
 
         public async Task<Item> GetItemAsync(string id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
+            try
+            {
+                return await contentService.GetContent(id);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to Load Item ({id}) from server");
+                Debug.WriteLine(ex.Message);
+            }
+
+            return new Item()
+            {
+                Id = Guid.Empty.ToString(),
+                Title = "Error loading",
+                Subtitle = "",
+                Body = "",
+                Date = DateTime.Now,
+            };
         }
 
         public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)

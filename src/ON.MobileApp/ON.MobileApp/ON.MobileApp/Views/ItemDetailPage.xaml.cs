@@ -10,6 +10,9 @@ namespace ON.MobileApp.Views
         {
             InitializeComponent();
             BindingContext = new ItemDetailViewModel();
+            //var htmlSource = new HtmlWebViewSource();
+            //htmlSource.Html = @"<html><body>"+Mode+@""</body></html>";
+            //bodyWebView.Source = htmlSource;
         }
     }
 }
